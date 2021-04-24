@@ -60,8 +60,7 @@ export default {
         password: "kyoko2623",
       },
       passwordType: "password",
-      capsTooltip: "false",]
-      dasdasd
+      capsTooltip: "false",
     };
   },
 };
