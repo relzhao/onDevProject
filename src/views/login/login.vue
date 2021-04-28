@@ -50,6 +50,13 @@
           </span> -->
         </el-form-item>
       </el-tooltip>
+      <el-button
+        @click="handleLogin"
+        ref="text"
+        type="primary"
+        style="width: 100%; margin-bottom: 30px"
+        >登入</el-button
+      >
     </el-form>
   </div>
 </template>
@@ -66,6 +73,14 @@ export default {
       capsTooltip: "false",
     };
   },
+  methods: {
+    handleLogin() {
+      // this.$router.push({
+      //   path: "/",
+      // });
+      console.log(this.$refs.text);
+    },
+  },
 };
 </script>
 <style lang="scss">
@@ -77,31 +92,31 @@ html,
 body {
   height: 100%;
 }
-// .login-container {
-//   .el-input {
-//     width: 85%;
-//     height: 47px;
-//     input {
-//       background: transparent;
-//       border: 0px;
-//       -webkit-appearance: none;
-//       border-radius: 0px;
-//       padding: 12px 15px 12px 35px;
-//       height: 47px;
-//     }
-//   }
-//   .el-form-item {
-//     border: 1px solid rgba(255, 255, 255, 0.1);
-//     background: rgba(0, 0, 0, 0.1);
-//     border-radius: 5px;
-//     color: #454545;
-//   }
-// }
+.login-container {
+  .el-input {
+    width: 85%;
+    height: 47px;
+    input {
+      background: transparent;
+      border: 0px;
+      -webkit-appearance: none;
+      border-radius: 0px;
+      padding: 12px 15px 12px 35px;
+      height: 47px;
+    }
+  }
+  .el-form-item {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    color: #454545;
+  }
+}
 </style>
 
 <style lang="scss" scoped>
-$bg: #1e264d;
-$font_color: #f5e5c6;
+$bg: #41555d;
+$font_color: #eedeb0;
 
 .login-container {
   min-height: 100%;
