@@ -15,7 +15,7 @@ const routes = [
       {
         path: "",
         name: "Dashboard",
-        component: () => import("../views/Home"),
+        component: () => import("../views/Home.vue"),
       },
     ],
   },
@@ -56,7 +56,7 @@ const routes = [
   {
     path: "/login",
     name: "login",
-    component: () => import("../views/login/login"),
+    component: () => import("../views/login/login.vue"),
   },
 ];
 
