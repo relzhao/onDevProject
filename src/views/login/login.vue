@@ -15,6 +15,7 @@
           <i class="el-icon-user-solid"></i>
         </span> -->
         <el-input
+          ref="username"
           prefix-icon="el-icon-user-solid"
           v-model="loginForm.username"
           placeholder="用户名"
@@ -36,6 +37,7 @@
             <i class="el-icon-lock"></i>
           </span> -->
           <el-input
+            ref="password"
             prefix-icon="el-icon-lock"
             v-model="loginForm.password"
             placeholder="密码"
@@ -71,6 +73,7 @@ export default {
       },
       passwordType: "password",
       capsTooltip: "false",
+      loading: false,
     };
   },
   methods: {
@@ -78,7 +81,13 @@ export default {
       // this.$router.push({
       //   path: "/",
       // });
-      console.log(this.$refs.text);
+      this.$refs.loginForm.validate((valid) => {
+        if (valid) {
+          this.loading = true;
+          // thid.$store.dispatch()
+          console.log(this.$store.state);
+        }
+      });
     },
   },
 };
