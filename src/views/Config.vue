@@ -48,5 +48,8 @@ export default {
   mounted() {
     this.getData();
   },
+  created() {
+    console.log(this.$route.meta.hidden);
+  },
 };
 </script>

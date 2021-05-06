@@ -1,4 +1,4 @@
-<template >
+<template>
   <div class="tab">
     <ul class="title flex">
       <li
@@ -21,7 +21,11 @@ export default {
       titles: [],
     };
   },
+  mounted() {
+    this.$children[0].show = true;
+  },
   watch: {
+    //监听
     activeIndex(index) {
       // index为 监测到的数据变化索引 即为所点击的DOM对象在序列中的索引
       this.$children.forEach((r, i) => {
@@ -34,5 +38,4 @@ export default {
   },
 };
 </script>
-<style lang="scss">
-</style>
+<style lang="scss"></style>

@@ -34,10 +34,12 @@ const routes = [
   {
     path: "/config",
     component: Layout,
+
     children: [
       {
         path: "",
         name: "Config",
+        meta: { hidden: true },
         component: () => import("../views/Config"),
       },
     ],
