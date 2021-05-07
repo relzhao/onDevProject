@@ -61,6 +61,7 @@
   </div>
 </template>
 <script>
+import { getmock } from "@/api/index.js";
 export default {
   name: "Login",
   data() {
@@ -73,12 +74,21 @@ export default {
       capsTooltip: "false",
     };
   },
+  created() {
+    console.log(getmock());
+    getmock().then((res) => {
+      console.log(res);
+    });
+  },
   methods: {
     handleLogin() {
       // this.$router.push({
       //   path: "/",
       // });
-      console.log(this.$refs.text);
+      // this.$http.get("/vue-demo/user/login").then((res) => {
+      //   console.log(res);
+      // });
+      // console.log(this.$refs.text);
     },
   },
 };

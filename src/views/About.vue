@@ -54,6 +54,7 @@ export default {
     //     num: 5,
     //   });
     // },
+
     addAge() {
       //异步执行
       this.$store.dispatch("addAgeAsync", { num: 10 });
