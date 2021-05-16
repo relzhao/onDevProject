@@ -63,29 +63,49 @@
   </div>
 </template>
 <script>
+// import { login } from "@/api/user";
 export default {
-  name: "Login",
+  name: "login",
   data() {
     return {
       loginForm: {
-        username: "",
-        password: "",
+        username: "admin",
+        password: "111111",
+      },
+      loginRules: {
+        username: [
+          { required: true, message: "请输入用户名", trigger: "blur" },
+        ],
+        password: [{ required: true, message: "请输入密码", trigger: "blur" }],
       },
       passwordType: "password",
       capsTooltip: "false",
       loading: false,
+      redirect: undefined,
+      otherQuery: {},
     };
   },
   methods: {
     handleLogin() {
-      // this.$router.push({
-      //   path: "/",
-      // });
       this.$refs.loginForm.validate((valid) => {
         if (valid) {
           this.loading = true;
-          // thid.$store.dispatch()
-          console.log(this.$store.state);
+          this.$store
+            .dispatch("user/login", this.loginForm)
+            .then(() => {
+              console.log(111);
+              this.$router.push({
+                path: this.redirect || "/",
+                query: this.otherQuery,
+              });
+              this.loading = false;
+            })
+            .catch(() => {
+              this.loading = false;
+            });
+        } else {
+          console.log("error submit!");
+          return false;
         }
       });
     },
