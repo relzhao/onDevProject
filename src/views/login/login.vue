@@ -3,10 +3,10 @@
     <el-form
       :model="loginForm"
       ref="loginForm"
-      :rules="loginRules"
       label-position="left"
       autocomplete="on"
       class="login-form"
+      @submit.native.prevent
       ><div class="title-container">
         <h3 class="title">盈帆管理系统</h3>
       </div>
@@ -53,7 +53,7 @@
         </el-form-item>
       </el-tooltip>
       <el-button
-        @click="handleLogin"
+        @click.native.prevent="handleLogin"
         ref="text"
         type="primary"
         style="width: 100%; margin-bottom: 30px"
@@ -70,16 +70,14 @@ export default {
     return {
       loginForm: {
         username: "admin",
-        password: "111111",
+        password: "11111111",
       },
       loginRules: {
-        username: [
-          { required: true, message: "请输入用户名", trigger: "blur" },
-        ],
-        password: [{ required: true, message: "请输入密码", trigger: "blur" }],
+        username: [{ required: true, trigger: "blur" }],
+        password: [{ required: true, trigger: "blur" }],
       },
       passwordType: "password",
-      capsTooltip: "false",
+      capsTooltip: false,
       loading: false,
       redirect: undefined,
       otherQuery: {},
@@ -87,29 +85,39 @@ export default {
   },
   methods: {
     handleLogin() {
-      this.$refs.loginForm.validate((valid) => {
-        if (valid) {
-          this.loading = true;
-          this.$store
-            .dispatch("user/login", this.loginForm)
-            .then(() => {
-              console.log(111);
-              this.$router.push({
-                path: this.redirect || "/",
-                query: this.otherQuery,
-              });
-              this.loading = false;
-            })
-            .catch(() => {
-              this.loading = false;
-            });
-        } else {
-          console.log("error submit!");
-          return false;
-        }
-      });
+      this.loading = true;
+      console.log("handleLogin");
+      this.$store
+        .dispatch("user/login", this.loginForm)
+        .then(() => {
+          console.log("handleLogin: then");
+          // this.$router.push({
+          //   path: this.redirect || "/",
+          //   query: this.otherQuery,
+          // });
+          // this.loading = false;
+        })
+        .catch(() => {
+          this.loading = false;
+        });
     },
   },
+  // computed: {
+  //   handleLogin() {
+  //     return new Promise((resolve, reject) => {
+  //       login({
+  //         username: this.loginForm.username.trim(),
+  //         password: this.loginForm.password,
+  //       })
+  //         .then((res) => {
+  //           console.log(res);
+  //         })
+  //         .catch((err) => {
+  //           console.log(err);
+  //         });
+  //     });
+  //   },
+  // },
 };
 </script>
 <style lang="scss">

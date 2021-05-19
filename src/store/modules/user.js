@@ -17,27 +17,32 @@ const mutations = {
 
 const actions = {
   login({ commit }, userInfo) {
-    console.log(userInfo);
     const { username, password } = userInfo;
+    console.log("action:" + userInfo);
     return new Promise((resolve, reject) => {
-      console.log(2222);
-      login({ username: username.trim(), password: password })
-        .then((response) => {
-          console.log(response);
-          const { data } = response;
-          commit("SET_TOKEN", data.token);
-          setToken(data.token);
-          resolve();
-        })
-        .catch((err) => {
-          reject(err);
-        });
+      console.log("promise: begin");
+      try {
+        console.log(112);
+        login({ username: username.trim(), password: password })
+          .then((response) => {
+            console.log("primise: " + response);
+            const { data } = response;
+            commit("SET_TOKEN", data.token);
+            setToken(data.token);
+            resolve();
+          })
+          .catch((err) => {
+            reject(err);
+          });
+      } catch (error) {
+        console.log("error: ", error);
+      }
     });
   },
 };
 
 export default {
-  namesSpaced: true,
+  namespaced: true,
   state,
   mutations,
   actions,

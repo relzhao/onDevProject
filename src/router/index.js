@@ -9,7 +9,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "dashboard",
+    // name: "Dashboard",
     component: Layout,
     children: [
       {
@@ -21,12 +21,12 @@ const routes = [
   },
   {
     path: "/about",
-    name: "About",
+    // name: "About",
     component: Layout,
     children: [
       {
         path: "",
-        name: "About",
+        // name: "About",
         component: () => import("../views/About"),
       },
     ],
