@@ -2,6 +2,7 @@
   <div class="login-container">
     <el-form
       :model="loginForm"
+      :rules="loginRules"
       ref="loginForm"
       label-position="left"
       autocomplete="on"
@@ -10,7 +11,7 @@
       ><div class="title-container">
         <h3 class="title">盈帆管理系统</h3>
       </div>
-      <el-form-item>
+      <el-form-item prop="username">
         <!-- <span class="icon-container">
           <i class="el-icon-user-solid"></i>
         </span> -->
@@ -32,7 +33,7 @@
         placement="right"
         manual
       >
-        <el-form-item>
+        <el-form-item prop="password">
           <!-- <span class="icon-container">
             <i class="el-icon-lock"></i>
           </span> -->
@@ -45,6 +46,8 @@
             :type="passwordType"
             autocomplete="on"
             tabindex="2"
+            @keyup.native="checkCapsLock"
+            @keyup.enter.native="handleLogin"
           >
           </el-input>
           <!-- <span class="show-pwd">
@@ -73,8 +76,24 @@ export default {
         password: "11111111",
       },
       loginRules: {
-        username: [{ required: true, trigger: "blur" }],
-        password: [{ required: true, trigger: "blur" }],
+        username: [
+          { required: true, trigger: "blur", message: "用户名为必填项" },
+          {
+            min: 3,
+            max: 20,
+            trigger: "blur",
+            message: "用户名长度不小于3位，不大于20位",
+          },
+        ],
+        password: [
+          { required: true, trigger: "blur", message: "密码为必填项" },
+          {
+            min: 6,
+            max: 16,
+            trigger: "blur",
+            message: "密码长度不小于6位，不大于16位",
+          },
+        ],
       },
       passwordType: "password",
       capsTooltip: false,
@@ -85,39 +104,29 @@ export default {
   },
   methods: {
     handleLogin() {
-      this.loading = true;
-      console.log("handleLogin");
-      this.$store
-        .dispatch("user/login", this.loginForm)
-        .then(() => {
-          console.log("handleLogin: then");
-          // this.$router.push({
-          //   path: this.redirect || "/",
-          //   query: this.otherQuery,
-          // });
-          // this.loading = false;
-        })
-        .catch(() => {
-          this.loading = false;
-        });
+      this.$refs.loginForm.validate((valid) => {
+        if (valid) {
+          this.loading = true;
+          this.$store
+            .dispatch("user/login", this.loginForm)
+            .then(() => {
+              this.$router.push({
+                path: this.redirect || "/",
+                query: this.otherQuery,
+              });
+              this.loading = false;
+            })
+            .catch(() => {
+              this.loading = false;
+            });
+        }
+      });
+    },
+    checkCapsLock(e) {
+      const { key } = e;
+      this.capsTooltip = key && key.length === 1 && key >= "A" && key <= "Z";
     },
   },
-  // computed: {
-  //   handleLogin() {
-  //     return new Promise((resolve, reject) => {
-  //       login({
-  //         username: this.loginForm.username.trim(),
-  //         password: this.loginForm.password,
-  //       })
-  //         .then((res) => {
-  //           console.log(res);
-  //         })
-  //         .catch((err) => {
-  //           console.log(err);
-  //         });
-  //     });
-  //   },
-  // },
 };
 </script>
 <style lang="scss">

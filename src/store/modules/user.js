@@ -18,14 +18,10 @@ const mutations = {
 const actions = {
   login({ commit }, userInfo) {
     const { username, password } = userInfo;
-    console.log("action:" + userInfo);
     return new Promise((resolve, reject) => {
-      console.log("promise: begin");
       try {
-        console.log(112);
         login({ username: username.trim(), password: password })
           .then((response) => {
-            console.log("primise: " + response);
             const { data } = response;
             commit("SET_TOKEN", data.token);
             setToken(data.token);

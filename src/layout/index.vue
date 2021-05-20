@@ -2,23 +2,24 @@
   <div class="box-wrap">
     <el-container style="height: 100%">
       <sidebar></sidebar>
-      <el-container>
-        <el-header>Header </el-header>
-        <app-main></app-main>
-      </el-container>
+      <!-- <el-container> -->
+      <navbar></navbar>
+      <!-- <el-header></el-header> -->
+      <app-main></app-main>
+      <!-- </el-container> -->
     </el-container>
   </div>
 </template>
 <script>
 // import AppMain from "./components/AppMain.vue";
 // import Sidebar from "./components/Sidebar";
-import { AppMain, Sidebar } from "./components";
+import { AppMain, Sidebar, Navbar } from "./components";
 export default {
   name: "Layout",
-  components: { AppMain, Sidebar },
+  components: { AppMain, Sidebar, Navbar },
 };
 </script>
-<style lang="less">
+<style lang="scss">
 .box-wrap {
   position: absolute;
   top: 0;
@@ -26,13 +27,14 @@ export default {
   width: 100%;
   height: 100%;
 }
-.el-header,
-.el-footer {
-  background-color: #b3c0d1;
-  color: #333;
-  text-align: center;
-  line-height: 60px;
-}
+
+// .el-header {
+//   height: 200px !important;
+//   background-color: #b3c0d1;
+//   color: #333;
+//   text-align: center;
+//   line-height: 60px;
+// }
 
 .el-aside {
   background-color: #d3dce6;

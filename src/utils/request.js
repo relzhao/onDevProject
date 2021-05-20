@@ -18,16 +18,15 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   (response) => {
     const res = response.data;
-    // //20000:错误代码
-    // if (res.code !== 20000) {
-    //   console.log("输入错误:" + res.code);
-    //   // 50008:非法代码 500012：其他地方已登录
-    //   if (res.code === 50008 || res.code === 500012) {
-    //     console.log("有错误：" + res.code);
-    //   }
-    //   return Promise.reject(res);
-    // }
-    console.log("res: " + response);
+    //20000:错误代码
+    if (res.code !== 20000) {
+      console.log("输入错误:" + res.code);
+      // 50008:非法代码 500012：其他地方已登录
+      if (res.code === 50008 || res.code === 500012) {
+        console.log("有错误：" + res.code);
+      }
+      return Promise.reject(res);
+    }
     return res;
   },
   (error) => {
