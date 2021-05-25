@@ -1,9 +1,9 @@
 <template>
-  <div class="app-main">
-    <el-main style="height: 100%">
+  <section class="app-main">
+    <div style="height: 100%">
       <router-view></router-view>
-    </el-main>
-  </div>
+    </div>
+  </section>
 </template>
 <script>
 export default {
@@ -15,7 +15,12 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
+* {
+  margin: 0px;
+  padding: 0px;
+  // box-sizing: border-box;
+}
 .app-main {
   height: 100%;
 }

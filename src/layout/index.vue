@@ -1,13 +1,10 @@
 <template>
   <div class="box-wrap">
-    <el-container style="height: 100%">
-      <sidebar></sidebar>
-      <!-- <el-container> -->
+    <sidebar></sidebar>
+    <div class="main-container">
       <navbar></navbar>
-      <!-- <el-header></el-header> -->
       <app-main></app-main>
-      <!-- </el-container> -->
-    </el-container>
+    </div>
   </div>
 </template>
 <script>
@@ -21,27 +18,27 @@ export default {
 </script>
 <style lang="scss">
 .box-wrap {
-  position: absolute;
-  top: 0;
-  left: 0;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  // width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
   width: 100%;
-  height: 100%;
 }
 
-// .el-header {
-//   height: 200px !important;
-//   background-color: #b3c0d1;
-//   color: #333;
-//   text-align: center;
-//   line-height: 60px;
-// }
-
-.el-aside {
-  background-color: #d3dce6;
-  color: #333;
-  text-align: center;
-  line-height: 200px;
-  height: 100vh;
+.main-container {
+  // width: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  //   position: relative;
+  //   display: flex;
+  //   overflow: hidden;
+  //   visibility: hidden;
 }
 
 .el-main {
@@ -49,10 +46,6 @@ export default {
   color: #333;
   text-align: center;
   line-height: 100px;
-}
-
-body > .el-container {
-  margin-bottom: 40px;
 }
 
 .el-container:nth-child(5) .el-aside,
