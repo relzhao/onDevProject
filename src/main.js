@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2021-04-01 21:49:22
+ * @LastEditTime: 2021-06-08 01:07:01
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \demo-vue\my-app\src\main.js
+ */
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router/index";
@@ -6,22 +14,10 @@ import "./plugins/element.js";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 import * as echarts from "echarts";
-<<<<<<< HEAD
-=======
-import axios from "axios";
-const { mockXHR } = require("../mock");
->>>>>>> 1cab51f9ee2111876dffa1198acc2f05c7d7aa54
 
 Vue.use(ElementUI);
 Vue.config.productionTip = false;
 Vue.prototype.$echarts = echarts;
-<<<<<<< HEAD
-=======
-Vue.prototype.$http = axios;
-if (process.env.NODE_ENV == "development") {
-  mockXHR();
-}
->>>>>>> 1cab51f9ee2111876dffa1198acc2f05c7d7aa54
 
 new Vue({
   router,

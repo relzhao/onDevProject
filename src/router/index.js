@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-25 00:29:29
- * @LastEditTime: 2021-06-07 17:05:12
+ * @LastEditTime: 2021-06-08 01:05:59
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /onDevProject/src/router/index.js
@@ -20,14 +20,8 @@ const routes = [
     component: Layout,
     children: [
       {
-<<<<<<< HEAD
-        path: "/redirect/:path(.*)",
+        path: "/redirect/:path*",
         component: () => import("../views/redirect"),
-=======
-        path: "",
-        name: "Dashboard",
-        component: () => import("../views/Home.vue"),
->>>>>>> 1cab51f9ee2111876dffa1198acc2f05c7d7aa54
       },
     ],
   },
@@ -104,11 +98,7 @@ const routes = [
   {
     path: "/login",
     name: "login",
-<<<<<<< HEAD
     component: () => import("../views/login"),
-=======
-    component: () => import("../views/login/login.vue"),
->>>>>>> 1cab51f9ee2111876dffa1198acc2f05c7d7aa54
   },
 ];
 
