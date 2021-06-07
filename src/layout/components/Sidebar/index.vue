@@ -25,23 +25,11 @@ export default {};
 </script>
 <style lang="scss">
 .aside {
-  // width: 200px;
-  position: fixed;
   background-color: #d3dce6;
   color: #333;
   text-align: center;
   line-height: 200px;
   height: 100%;
-  flex-direction: row;
-  display: flex;
   min-height: 100%;
-  // align-items: stretch;
-  flex-basis: 200px;
-  flex-grow: 0;
-  .el-menu {
-    // display: flex;
-    width: 200px;
-    background-color: #d3dce6;
-  }
 }
 </style>

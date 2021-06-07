@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-04-25 00:29:29
+ * @LastEditTime: 2021-06-01 13:37:34
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /onDevProject/src/views/Config.vue
+-->
 <template>
   <div>
     <el-table :data="tableData" style="width: 100%">
@@ -25,28 +33,11 @@ export default {
     };
   },
   methods: {
-    getData() {
-      this.$http(
-        "https://www.fastmock.site/mock/3e456e2b51582fd5517acdf83145efdb/ele-demo/tablist"
-      ).then((res) => {
-        if (res.status == "200") {
-          this.tableData = res.data;
-          for (var i = 0; i < this.tableData.length; i++) {
-            this.dataList.push({
-              text: this.tableData[i].date,
-              value: this.tableData[i].date,
-            });
-          }
-        }
-      });
-    },
     filterHandler(value, row, column) {
       const property = column["property"];
       return row[property] === value;
     },
   },
-  mounted() {
-    this.getData();
-  },
+  mounted() {},
 };
 </script>

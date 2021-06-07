@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2021-04-25 00:29:29
+ * @LastEditTime: 2021-06-07 17:05:12
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /onDevProject/src/router/index.js
+ */
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Layout from "../layout";
@@ -8,29 +16,45 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
-    // name: "Dashboard",
+    path: "/redirect",
     component: Layout,
     children: [
       {
-        path: "",
-        name: "Dashboard",
-        component: () => import("../views/Home"),
+        path: "/redirect/:path(.*)",
+        component: () => import("../views/redirect"),
       },
     ],
   },
   {
-    path: "/about",
-    // name: "About",
+    path: "/",
     component: Layout,
+    redirect: "/dashboard",
     children: [
       {
-        path: "",
-        // name: "About",
-        component: () => import("../views/About"),
+        path: "/dashboard",
+        name: "Dashboard",
+        component: () => import("../views/Home"),
+        meta: {
+          title: "Dashboard",
+        },
       },
     ],
   },
+  // {
+  //   path: "/about",
+  //   // name: "About",
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: "",
+  //       // name: "About",
+  //       component: () => import("../views/About"),
+  //       meta: {
+  //         title: "关于",
+  //       },
+  //     },
+  //   ],
+  // },
   {
     path: "/config",
     component: Layout,
@@ -39,17 +63,33 @@ const routes = [
         path: "",
         name: "Config",
         component: () => import("../views/Config"),
+        meta: {
+          title: "配置",
+        },
       },
     ],
   },
   {
     path: "/application",
     component: Layout,
+    meta: { title: "应用管理" },
+    redirect: "/app",
     children: [
       {
-        name: "Application",
-        path: "",
+        name: "App",
+        path: "/app",
         component: () => import("../views/Application"),
+        meta: {
+          title: "应用",
+        },
+      },
+      {
+        name: "About",
+        path: "/about",
+        component: () => import("../views/About"),
+        meta: {
+          title: "关于",
+        },
       },
     ],
   },

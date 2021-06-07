@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <el-row>
-      <el-col
+      <div
         :xs="24"
         :sm="24"
         :md="12"
@@ -10,7 +10,7 @@
         :key="index"
       >
         <el-image :src="item"></el-image>
-      </el-col>
+      </div>
     </el-row>
   </div>
 </template>
@@ -36,3 +36,8 @@ export default {
   // components: {},
 };
 </script>
+<style lang="scss">
+.home {
+  overflow: hidden;
+}
+</style>

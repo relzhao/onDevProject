@@ -1,8 +1,6 @@
 <template>
   <section class="app-main">
-    <div style="height: 100%">
-      <router-view></router-view>
-    </div>
+    <router-view></router-view>
   </section>
 </template>
 <script>
@@ -22,6 +20,8 @@ export default {
   // box-sizing: border-box;
 }
 .app-main {
+  position: relative;
+  overflow: auto;
   height: 100%;
 }
 </style>

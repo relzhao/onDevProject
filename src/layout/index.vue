@@ -1,6 +1,6 @@
 <template>
   <div class="box-wrap">
-    <sidebar></sidebar>
+    <sidebar class="sidebar-container"></sidebar>
     <div class="main-container">
       <navbar></navbar>
       <app-main></app-main>
@@ -18,34 +18,25 @@ export default {
 </script>
 <style lang="scss">
 .box-wrap {
-  // position: absolute;
-  // top: 0;
-  // left: 0;
-  // width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  position: relative;
   width: 100%;
+  height: 100%;
 }
-
+.sidebar-container {
+  width: 210px;
+  background-color: gray;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1001;
+  overflow: hidden;
+}
 .main-container {
-  // width: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  //   position: relative;
-  //   display: flex;
-  //   overflow: hidden;
-  //   visibility: hidden;
-}
-
-.el-main {
-  background-color: #e9eef3;
-  color: #333;
-  text-align: center;
-  line-height: 100px;
+  min-height: 100%;
+  margin-left: 210px;
+  position: relative;
 }
 
 .el-container:nth-child(5) .el-aside,

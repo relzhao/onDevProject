@@ -1,21 +1,26 @@
 <template>
-  <el-row>
-    <el-col :span="24"> <div class="navbar">header</div></el-col>
-  </el-row>
+  <header class="navbar">
+    <breadcrumb></breadcrumb>
+  </header>
 </template>
 
 <script>
-export default {};
+import Breadcrumb from "@/components/Breadcrumb";
+export default {
+  components: {
+    Breadcrumb,
+  },
+};
 </script>
 
 <style lang="scss">
 .navbar {
   height: 80px !important;
+  position: relative;
+  overflow: hidden;
   background-color: #b3c0d1;
   color: #333;
   text-align: center;
   line-height: 60px;
-  //   overflow: hidden;
-  //   visibility: hidden;
 }
 </style>
