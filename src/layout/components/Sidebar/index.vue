@@ -23,6 +23,7 @@
 <script>
 export default {};
 </script>
+<<<<<<< HEAD
 <style lang="scss">
 .aside {
   background-color: #d3dce6;
@@ -33,3 +34,6 @@ export default {};
   min-height: 100%;
 }
 </style>
+=======
+<style></style>
+>>>>>>> 1cab51f9ee2111876dffa1198acc2f05c7d7aa54

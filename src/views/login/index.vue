@@ -66,7 +66,11 @@
   </div>
 </template>
 <script>
+<<<<<<< HEAD:src/views/login/index.vue
 // import { login } from "@/api/user";
+=======
+import { getmock } from "@/api/index.js";
+>>>>>>> 1cab51f9ee2111876dffa1198acc2f05c7d7aa54:src/views/login/login.vue
 export default {
   name: "login",
   data() {
@@ -102,8 +106,15 @@ export default {
       otherQuery: {},
     };
   },
+  created() {
+    console.log(getmock());
+    getmock().then((res) => {
+      console.log(res);
+    });
+  },
   methods: {
     handleLogin() {
+<<<<<<< HEAD:src/views/login/index.vue
       this.$refs.loginForm.validate((valid) => {
         if (valid) {
           this.loading = true;
@@ -125,6 +136,15 @@ export default {
     checkCapsLock(e) {
       const { key } = e;
       this.capsTooltip = key && key.length === 1 && key >= "A" && key <= "Z";
+=======
+      // this.$router.push({
+      //   path: "/",
+      // });
+      // this.$http.get("/vue-demo/user/login").then((res) => {
+      //   console.log(res);
+      // });
+      // console.log(this.$refs.text);
+>>>>>>> 1cab51f9ee2111876dffa1198acc2f05c7d7aa54:src/views/login/login.vue
     },
   },
 };

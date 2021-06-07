@@ -20,8 +20,14 @@ const routes = [
     component: Layout,
     children: [
       {
+<<<<<<< HEAD
         path: "/redirect/:path(.*)",
         component: () => import("../views/redirect"),
+=======
+        path: "",
+        name: "Dashboard",
+        component: () => import("../views/Home.vue"),
+>>>>>>> 1cab51f9ee2111876dffa1198acc2f05c7d7aa54
       },
     ],
   },
@@ -58,10 +64,12 @@ const routes = [
   {
     path: "/config",
     component: Layout,
+
     children: [
       {
         path: "",
         name: "Config",
+        meta: { hidden: true },
         component: () => import("../views/Config"),
         meta: {
           title: "配置",
@@ -96,7 +104,11 @@ const routes = [
   {
     path: "/login",
     name: "login",
+<<<<<<< HEAD
     component: () => import("../views/login"),
+=======
+    component: () => import("../views/login/login.vue"),
+>>>>>>> 1cab51f9ee2111876dffa1198acc2f05c7d7aa54
   },
 ];
 

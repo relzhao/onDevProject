@@ -38,6 +38,15 @@ export default {
       return row[property] === value;
     },
   },
+<<<<<<< HEAD
   mounted() {},
+=======
+  mounted() {
+    this.getData();
+  },
+  created() {
+    console.log(this.$route.meta.hidden);
+  },
+>>>>>>> 1cab51f9ee2111876dffa1198acc2f05c7d7aa54
 };
 </script>
