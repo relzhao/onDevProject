@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-25 00:29:29
- * @LastEditTime: 2021-06-08 01:05:59
+ * @LastEditTime: 2021-06-08 01:28:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /onDevProject/src/router/index.js
@@ -58,12 +58,10 @@ const routes = [
   {
     path: "/config",
     component: Layout,
-
     children: [
       {
         path: "",
         name: "Config",
-        meta: { hidden: true },
         component: () => import("../views/Config"),
         meta: {
           title: "配置",

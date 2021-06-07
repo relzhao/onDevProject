@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-06-08 01:16:13
+ * @LastEditTime: 2021-06-08 01:28:44
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /onDevProject/src/layout/components/Sidebar/index.vue
+-->
 <template>
   <aside class="aside">
     <el-menu default-active="1" router>
@@ -23,7 +31,6 @@
 <script>
 export default {};
 </script>
-<<<<<<< HEAD
 <style lang="scss">
 .aside {
   background-color: #d3dce6;
@@ -34,6 +41,3 @@ export default {};
   min-height: 100%;
 }
 </style>
-=======
-<style></style>
->>>>>>> 1cab51f9ee2111876dffa1198acc2f05c7d7aa54

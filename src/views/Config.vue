@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-04-25 00:29:29
- * @LastEditTime: 2021-06-01 13:37:34
+ * @LastEditTime: 2021-06-08 01:25:45
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /onDevProject/src/views/Config.vue
@@ -38,15 +38,6 @@ export default {
       return row[property] === value;
     },
   },
-<<<<<<< HEAD
   mounted() {},
-=======
-  mounted() {
-    this.getData();
-  },
-  created() {
-    console.log(this.$route.meta.hidden);
-  },
->>>>>>> 1cab51f9ee2111876dffa1198acc2f05c7d7aa54
 };
 </script>
