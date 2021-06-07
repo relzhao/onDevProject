@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-05-25 23:04:02
- * @LastEditTime: 2021-06-08 00:11:22
+ * @LastEditTime: 2021-06-08 00:41:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /onDevProject/src/components/breadcrumb/index.vue
@@ -41,7 +41,7 @@ export default {
       let matched = this.$route.matched.filter(
         (item) => item.meta && item.meta.title
       );
-      const first = matched[0]; //取第一个route对象 用于判断其是否为dashboard
+      const first = matched[0]; //取第一个$route对象 用于判断其是否为dashboard
       if (!this.isDashboard(first)) {
         matched = [{ path: "/dashboard", meta: { title: "Dashboard" } }].concat(
           matched
