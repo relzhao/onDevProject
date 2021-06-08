@@ -1,19 +1,20 @@
 <!--
  * @Author: your name
  * @Date: 2021-05-25 23:04:02
- * @LastEditTime: 2021-06-08 00:53:50
+ * @LastEditTime: 2021-06-08 22:23:29
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /onDevProject/src/components/breadcrumb/index.vue
 -->
 <template>
   <el-breadcrumb separator="/">
-    <el-breadcrumb-item
-      :to="{ path: '/' }"
-      v-for="item in breadList"
-      :key="item.path"
-      >{{ item.meta.title }}</el-breadcrumb-item
-    >
+    <el-breadcrumb-item v-for="(item, index) in breadList" :key="item.path">
+      <span
+        v-if="item.redirect === 'noRedirect' || index == breadList.length - 1"
+        >{{ item.meta.title }}</span
+      >
+      <a v-else @click.prevent="handleLink(item)">{{ item.meta.title }}</a>
+    </el-breadcrumb-item>
   </el-breadcrumb>
 </template>
 
@@ -60,6 +61,15 @@ export default {
       return (
         name.trim().toLocaleLowerCase() === "Dashboard".toLocaleLowerCase()
       );
+    },
+    handleLink(item) {
+      const { redirect, path } = item;
+      console.log(redirect, path);
+      if (redirect) {
+        this.$router.push(redirect);
+        return;
+      }
+      this.$router.push(path);
     },
   },
 };

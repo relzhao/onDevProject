@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-25 00:29:29
- * @LastEditTime: 2021-06-08 01:28:15
+ * @LastEditTime: 2021-06-08 23:37:45
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /onDevProject/src/router/index.js
@@ -18,9 +18,10 @@ const routes = [
   {
     path: "/redirect",
     component: Layout,
+    hidden: true,
     children: [
       {
-        path: "/redirect/:path*",
+        path: "/redirect/:path(.*)",
         component: () => import("../views/redirect"),
       },
     ],
@@ -40,21 +41,6 @@ const routes = [
       },
     ],
   },
-  // {
-  //   path: "/about",
-  //   // name: "About",
-  //   component: Layout,
-  //   children: [
-  //     {
-  //       path: "",
-  //       // name: "About",
-  //       component: () => import("../views/About"),
-  //       meta: {
-  //         title: "关于",
-  //       },
-  //     },
-  //   ],
-  // },
   {
     path: "/config",
     component: Layout,
@@ -72,20 +58,20 @@ const routes = [
   {
     path: "/application",
     component: Layout,
+    name: "应用管理",
     meta: { title: "应用管理" },
-    redirect: "/app",
+    // redirect: "noRedirect",
+    redirect: "/application/app",
     children: [
       {
-        name: "App",
-        path: "/app",
+        path: "app",
         component: () => import("../views/Application"),
         meta: {
           title: "应用",
         },
       },
       {
-        name: "About",
-        path: "/about",
+        path: "about",
         component: () => import("../views/About"),
         meta: {
           title: "关于",

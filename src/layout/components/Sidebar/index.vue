@@ -1,8 +1,8 @@
 <!--
  * @Author: your name
  * @Date: 2021-06-08 01:16:13
- * @LastEditTime: 2021-06-08 01:28:44
- * @LastEditors: your name
+ * @LastEditTime: 2021-06-08 23:36:39
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /onDevProject/src/layout/components/Sidebar/index.vue
 -->
@@ -18,8 +18,8 @@
           <i class="el-icon-setting"></i>
           <span>应用管理</span>
         </template>
-        <el-menu-item index="/application">应用</el-menu-item>
-        <el-menu-item index="/about">关于</el-menu-item>
+        <el-menu-item index="/application/app">应用</el-menu-item>
+        <el-menu-item index="/application/about">关于</el-menu-item>
       </el-submenu>
       <el-menu-item index="/config">
         <i class="el-icon-setting"></i>
