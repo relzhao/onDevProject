@@ -1,9 +1,18 @@
+/*
+ * @Author: your name
+ * @Date: 2021-06-09 00:03:29
+ * @LastEditTime: 2021-06-11 16:12:20
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /onDevProject/src/store/modules/user.js
+ */
 import { login } from "@/api/user";
 import { getToken, setToken } from "@/utils/auth";
 
 const state = {
   token: getToken(),
   name: "",
+  role: [],
 };
 
 const mutations = {
@@ -12,6 +21,9 @@ const mutations = {
   },
   SET_TOKEN: (state, token) => {
     state.token = token;
+  },
+  SET_ROLE: (state, role) => {
+    state.role = role;
   },
 };
 
@@ -24,6 +36,7 @@ const actions = {
           .then((response) => {
             const { data } = response;
             commit("SET_TOKEN", data.token);
+            commit("SET_NAME", username);
             setToken(data.token);
             resolve();
           })

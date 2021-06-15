@@ -1,13 +1,13 @@
 <!--
  * @Author: your name
  * @Date: 2021-05-25 23:04:02
- * @LastEditTime: 2021-06-08 22:23:29
+ * @LastEditTime: 2021-06-10 15:13:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /onDevProject/src/components/breadcrumb/index.vue
 -->
 <template>
-  <el-breadcrumb separator="/">
+  <el-breadcrumb separator="/" class="app-breadcrumb">
     <el-breadcrumb-item v-for="(item, index) in breadList" :key="item.path">
       <span
         v-if="item.redirect === 'noRedirect' || index == breadList.length - 1"
@@ -75,4 +75,11 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.app-breadcrumb {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 50px;
+  margin-left: 8px;
+}
+</style>

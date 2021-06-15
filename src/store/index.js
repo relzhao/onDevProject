@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2021-04-01 21:49:22
- * @LastEditTime: 2021-06-08 01:06:22
- * @LastEditors: your name
+ * @LastEditTime: 2021-06-10 17:53:16
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \demo-vue\my-app\src\store\index.js
  */
@@ -20,6 +20,7 @@
 
 import Vue from "vue";
 import Vuex from "vuex";
+import getters from "@/store/getters";
 
 Vue.use(Vuex);
 
@@ -38,6 +39,7 @@ const modules = modulesFiles.keys().reduce((modules, modulePath) => {
 
 const store = new Vuex.Store({
   modules,
+  getters,
 });
 
 export default store;
