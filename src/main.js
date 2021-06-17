@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-01 21:49:22
- * @LastEditTime: 2021-06-08 23:57:04
+ * @LastEditTime: 2021-06-16 14:47:34
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \demo-vue\my-app\src\main.js
@@ -10,6 +10,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router/index";
 import store from "./store";
+import "./permission";
 import "./plugins/element.js";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";

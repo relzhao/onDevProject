@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-09 00:03:29
- * @LastEditTime: 2021-06-11 16:12:20
+ * @LastEditTime: 2021-06-17 09:25:05
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /onDevProject/src/store/modules/user.js
@@ -48,6 +48,26 @@ const actions = {
       }
     });
   },
+  getInfo({ commit, state }) {
+    return new Promise((resolve, reject) => {
+      // eslint-disable-next-line no-undef
+      getInfo(state.token)
+        .then((response) => {
+          const { data } = response;
+          if (!data) {
+            reject("getInfo:必须为非空数组");
+          }
+          const { roles, name } = data;
+          commit("SET_ROLES", roles);
+          commit("SET_NAME", name);
+          resolve(data);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  },
+  resetToken() {},
 };
 
 export default {
