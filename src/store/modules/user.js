@@ -1,18 +1,18 @@
 /*
  * @Author: your name
  * @Date: 2021-06-09 00:03:29
- * @LastEditTime: 2021-06-17 09:25:05
+ * @LastEditTime: 2021-06-25 17:35:36
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /onDevProject/src/store/modules/user.js
  */
-import { login } from "@/api/user";
-import { getToken, setToken } from "@/utils/auth";
+import { login, getInfo } from "@/api/user";
+import { getToken, setToken, removeToken } from "@/utils/auth";
 
 const state = {
   token: getToken(),
   name: "",
-  role: [],
+  roles: [],
 };
 
 const mutations = {
@@ -22,8 +22,8 @@ const mutations = {
   SET_TOKEN: (state, token) => {
     state.token = token;
   },
-  SET_ROLE: (state, role) => {
-    state.role = role;
+  SET_ROLES: (state, roles) => {
+    state.roles = roles;
   },
 };
 
@@ -35,6 +35,7 @@ const actions = {
         login({ username: username.trim(), password: password })
           .then((response) => {
             const { data } = response;
+            console.log("username:", username);
             commit("SET_TOKEN", data.token);
             commit("SET_NAME", username);
             setToken(data.token);
@@ -57,9 +58,10 @@ const actions = {
           if (!data) {
             reject("getInfo:必须为非空数组");
           }
-          const { roles, name } = data;
+          console.log("data:", data);
+          const { roles, username } = data;
           commit("SET_ROLES", roles);
-          commit("SET_NAME", name);
+          commit("SET_NAME", username);
           resolve(data);
         })
         .catch((error) => {
@@ -67,7 +69,14 @@ const actions = {
         });
     });
   },
-  resetToken() {},
+  resetToken({ commit }) {
+    return new Promise((resolve) => {
+      commit("SET_TOKEN", "");
+      commit("SET_ROLES", []);
+      removeToken();
+      resolve();
+    });
+  },
 };
 
 export default {
