@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-25 00:29:29
- * @LastEditTime: 2021-06-08 23:37:45
+ * @LastEditTime: 2021-06-09 00:31:48
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /onDevProject/src/router/index.js
@@ -60,7 +60,7 @@ const routes = [
     component: Layout,
     name: "应用管理",
     meta: { title: "应用管理" },
-    // redirect: "noRedirect",
+    // redirect1: "noRedirect",
     redirect: "/application/app",
     children: [
       {
