@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-05-25 23:04:02
- * @LastEditTime: 2021-06-10 15:13:27
+ * @LastEditTime: 2021-07-07 18:02:23
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /onDevProject/src/components/breadcrumb/index.vue
@@ -11,9 +11,12 @@
     <el-breadcrumb-item v-for="(item, index) in breadList" :key="item.path">
       <span
         v-if="item.redirect === 'noRedirect' || index == breadList.length - 1"
+        class="no-redirect"
         >{{ item.meta.title }}</span
       >
-      <a v-else @click.prevent="handleLink(item)">{{ item.meta.title }}</a>
+      <a v-else @click.prevent="handleLink(item)" class="no-weight">{{
+        item.meta.title
+      }}</a>
     </el-breadcrumb-item>
   </el-breadcrumb>
 </template>
@@ -77,9 +80,18 @@ export default {
 
 <style lang="scss" scoped>
 .app-breadcrumb {
+  font-weight: 0;
   display: inline-block;
   font-size: 14px;
   line-height: 50px;
   margin-left: 8px;
+  .no-weight {
+    font-weight: normal !important;
+  }
+  .no-redirect {
+    color: #97a8be;
+    cursor: text;
+    font-weight: 700;
+  }
 }
 </style>

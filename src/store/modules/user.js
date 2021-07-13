@@ -1,12 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2021-06-09 00:03:29
- * @LastEditTime: 2021-06-25 17:35:36
+ * @LastEditTime: 2021-07-07 16:40:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /onDevProject/src/store/modules/user.js
  */
-import { login, getInfo } from "@/api/user";
+import { login, getInfo, logout } from "@/api/user";
 import { getToken, setToken, removeToken } from "@/utils/auth";
 
 const state = {
@@ -63,6 +63,21 @@ const actions = {
           commit("SET_ROLES", roles);
           commit("SET_NAME", username);
           resolve(data);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  },
+  logout({ commit, state }) {
+    return new Promise((resolve, reject) => {
+      // eslint-disable-next-line no-undef
+      logout(state.token)
+        .then(() => {
+          commit("SET_TOKEN", "");
+          commit("SET_ROLES", "");
+          removeToken();
+          resolve();
         })
         .catch((error) => {
           reject(error);

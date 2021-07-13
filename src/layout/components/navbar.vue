@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-06-07 22:57:32
- * @LastEditTime: 2021-06-11 16:20:18
+ * @LastEditTime: 2021-07-07 16:58:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \demo-vue\my-app\src\layout\components\navbar.vue
@@ -17,7 +17,9 @@
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item>设置</el-dropdown-item>
-          <el-dropdown-item>登出</el-dropdown-item>
+          <el-dropdown-item @click.native="logout"
+            ><span> 登出</span></el-dropdown-item
+          >
         </el-dropdown-menu>
       </el-dropdown>
     </div>
@@ -38,7 +40,6 @@ export default {
   },
   created() {
     this.getUser();
-    console.log(this.name);
   },
   computed: {
     ...mapGetters(["name"]),
@@ -48,6 +49,11 @@ export default {
       this.user = {
         name: this.name,
       };
+    },
+    // 登出
+    async logout() {
+      await this.$store.dispatch("user/logout");
+      this.$router.push(`/login?redirect=${this.$route.fullPath}`);
     },
   },
 };
