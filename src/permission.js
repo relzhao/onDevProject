@@ -1,7 +1,7 @@
 /*
  * @Author: rel
  * @Date: 2021-06-11 17:19:43
- * @LastEditTime: 2021-06-28 21:18:14
+ * @LastEditTime: 2021-09-03 10:18:38
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /onDevProject/src/permission.js
@@ -14,7 +14,7 @@ const whiteList = ["/login"];
 
 router.beforeEach(async (to, from, next) => {
   const hasToken = getToken();
-  console.log("token:", hasToken);
+  console.log("token1:", hasToken);
   if (hasToken) {
     console.log("enter hastoken");
     console.log(to.path);

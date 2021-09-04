@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-09 00:03:29
- * @LastEditTime: 2021-07-07 16:40:14
+ * @LastEditTime: 2021-09-03 22:26:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /onDevProject/src/store/modules/user.js
@@ -34,10 +34,10 @@ const actions = {
       try {
         login({ username: username.trim(), password: password })
           .then((response) => {
-            const { data } = response;
-            console.log("username:", username);
+            const { data } = response.data;
+            console.log(response);
+            console.log(data);
             commit("SET_TOKEN", data.token);
-            commit("SET_NAME", username);
             setToken(data.token);
             resolve();
           })
@@ -54,7 +54,7 @@ const actions = {
       // eslint-disable-next-line no-undef
       getInfo(state.token)
         .then((response) => {
-          const { data } = response;
+          const { data } = response.data;
           if (!data) {
             reject("getInfo:必须为非空数组");
           }

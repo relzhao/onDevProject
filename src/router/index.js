@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-25 00:29:29
- * @LastEditTime: 2021-06-08 23:37:45
+ * @LastEditTime: 2021-08-30 18:02:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /onDevProject/src/router/index.js
@@ -14,7 +14,7 @@ import Layout from "../layout";
 
 Vue.use(VueRouter);
 
-const routes = [
+export const constantRoutes = [
   {
     path: "/redirect",
     component: Layout,
@@ -37,20 +37,6 @@ const routes = [
         component: () => import("../views/Home"),
         meta: {
           title: "Dashboard",
-        },
-      },
-    ],
-  },
-  {
-    path: "/config",
-    component: Layout,
-    children: [
-      {
-        path: "",
-        name: "Config",
-        component: () => import("../views/Config"),
-        meta: {
-          title: "配置",
         },
       },
     ],
@@ -86,8 +72,32 @@ const routes = [
   },
 ];
 
-const router = new VueRouter({
-  routes,
-});
+export const asyncRoutes = [
+  {
+    path: "/config",
+    component: Layout,
+    children: [
+      {
+        path: "index",
+        name: "Config",
+        component: () => import("../views/Config"),
+        meta: {
+          title: "配置",
+          roles: ["admin"],
+        },
+      },
+    ],
+  },
+];
+const createRouter = () =>
+  new VueRouter({
+    routes: constantRoutes,
+  });
 
+const router = createRouter();
+
+export function resetRouter() {
+  const newRouter = createRouter();
+  router.matcher = newRouter.matcher;
+}
 export default router;

@@ -1,20 +1,26 @@
 /*
  * @Author: your name
  * @Date: 2021-05-04 22:51:47
- * @LastEditTime: 2021-06-08 01:06:35
- * @LastEditors: your name
+ * @LastEditTime: 2021-09-02 22:36:34
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \demo-vue\my-app\src\utils\request.js
  */
 import axios from "axios";
 // import store from "@/store";
 
-const service = axios.create({
-  baseURL: process.env.VUE_APP_BASE_API,
-  timeout: 50000,
-});
+function requests() {
+  const service1 = axios.create({
+    baseURL: process.env.VUE_APP_BASE_API,
+    timeout: 50000,
+  });
+  const service2 = axios.create({
+    timeout: 50000,
+  });
+  return [service1, service2];
+}
 
-service.interceptors.request.use(
+requests()[0].interceptors.request.use(
   (config) => {
     return config;
   },
@@ -23,7 +29,7 @@ service.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-service.interceptors.response.use(
+requests()[0].interceptors.response.use(
   (response) => {
     const res = response.data;
     //20000:错误代码
@@ -42,4 +48,4 @@ service.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-export default service;
+export default requests;

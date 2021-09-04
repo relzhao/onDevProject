@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-06-08 01:16:13
- * @LastEditTime: 2021-06-08 23:36:39
+ * @LastEditTime: 2021-08-30 17:55:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /onDevProject/src/layout/components/Sidebar/index.vue
@@ -29,7 +29,20 @@
   </aside>
 </template>
 <script>
-export default {};
+import { mapGetters } from "vuex";
+export default {
+  computed: {
+    ...mapGetters(["permission_routes"]),
+  },
+  created() {
+    this.getinfo();
+  },
+  methods: {
+    getinfo() {
+      return this.permission_routes;
+    },
+  },
+};
 </script>
 <style lang="scss">
 .aside {
