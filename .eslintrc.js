@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-01 21:49:22
- * @LastEditTime: 2021-06-08 23:59:52
+ * @LastEditTime: 2021-09-06 22:13:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \demo-vue\my-app\.eslintrc.js
@@ -13,7 +13,7 @@ module.exports = {
     node: true,
     es6: true,
   },
-  extends: ["eslint:recommended", "plugin:vue/essential", "@vue/prettier"],
+  extends: ["plugin:vue/essential", "@vue/prettier"],
   rules: {
     "generator-star-spacing": "off",
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",

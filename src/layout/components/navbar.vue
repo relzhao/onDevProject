@@ -1,13 +1,16 @@
 <!--
  * @Author: your name
  * @Date: 2021-06-07 22:57:32
- * @LastEditTime: 2021-09-03 13:53:52
+ * @LastEditTime: 2021-09-15 08:39:57
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \demo-vue\my-app\src\layout\components\navbar.vue
 -->
 <template>
   <header class="navbar">
+    <div class="hamburger-container" @click="toggleSideBar">
+      <span class="el-icon-s-fold"></span>
+    </div>
     <breadcrumb class="breadcrumb-container"></breadcrumb>
     <div class="right-menu">
       <el-dropdown>
@@ -50,6 +53,9 @@ export default {
         name: this.name,
       };
     },
+    toggleSideBar() {
+      this.$store.dispatch("app/toggleSidebar");
+    },
     // 登出
     async logout() {
       await this.$store.dispatch("user/logout");
@@ -70,7 +76,13 @@ export default {
   text-align: center;
   line-height: 50px;
   box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
-
+  .hamburger-container {
+    line-height: 50px;
+    height: 100%;
+    float: left;
+    cursor: pointer;
+    padding: 0px 15px;
+  }
   .breadcrumb-container {
     float: left;
   }

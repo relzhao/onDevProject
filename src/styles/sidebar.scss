@@ -1,0 +1,50 @@
+.sidebar-container {
+  width: 210px;
+  background-color: gray;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1001;
+  overflow: hidden;
+  color: #333;
+  
+  line-height: 200px;
+  height: 100%;
+  min-height: 100%;
+  .scrollbar-wrapper {
+    overflow-x: hidden !important;
+  }
+
+  .el-scrollbar__bar.is-vertical {
+    right: 0px;
+  }
+  .el-scrollbar{
+    height:100% !important;
+  }
+}
+.hideSidebar{
+  .sidebar-container {
+    width: 54px !important;
+  }
+  .main-container {
+    margin-left: 54px;
+  }
+  .el-menu--collapse{
+    width: 54px !important;
+    text-align: center !important;
+    .el-menu-item {
+      overflow: hidden;
+      &>.el-tooltip{
+        padding: 0 !important;
+      }
+    }
+    .el-submenu{
+      overflow: hidden;
+      &>.el-submenu__title{
+        padding: 0 !important;
+      }
+    }
+  }
+}

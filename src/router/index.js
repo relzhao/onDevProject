@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-25 00:29:29
- * @LastEditTime: 2021-08-30 18:02:44
+ * @LastEditTime: 2021-09-17 13:52:57
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /onDevProject/src/router/index.js
@@ -37,6 +37,7 @@ export const constantRoutes = [
         component: () => import("../views/Home"),
         meta: {
           title: "Dashboard",
+          icon: "el-icon-s-home",
         },
       },
     ],
@@ -45,22 +46,27 @@ export const constantRoutes = [
     path: "/application",
     component: Layout,
     name: "应用管理",
-    meta: { title: "应用管理" },
     // redirect: "noRedirect",
     redirect: "/application/app",
+    meta: {
+      title: "应用管理",
+      icon: "el-icon-s-operation",
+    },
     children: [
       {
         path: "app",
         component: () => import("../views/Application"),
         meta: {
           title: "应用",
+          icon: "el-icon-setting",
         },
       },
       {
-        path: "about",
-        component: () => import("../views/About"),
+        path: "test",
+        component: () => import("../views/Application"),
         meta: {
-          title: "关于",
+          title: "应用测试",
+          icon: "el-icon-menu",
         },
       },
     ],
@@ -68,7 +74,46 @@ export const constantRoutes = [
   {
     path: "/login",
     name: "login",
+    hidden: true,
     component: () => import("../views/login"),
+  },
+  {
+    path: "/map",
+    component: Layout,
+    children: [
+      {
+        path: "amap",
+        component: () => import("../views/map/Map"),
+        name: "Map",
+        meta: {
+          title: "地图",
+          icon: "el-icon-map-location",
+        },
+      },
+    ],
+  },
+  {
+    path: "/full-map",
+    component: () => import("../views/map/FullMap"),
+
+    children: [
+      {
+        path: "index",
+        name: "FullMap",
+        meta: {
+          title: "移动端地图",
+          icon: "el-icon-map-location",
+        },
+      },
+    ],
+  },
+  {
+    path: "/test",
+    component: () => import("../views/map/Map"),
+    meta: {
+      title: "测试",
+      icon: "el-icon-map-location",
+    },
   },
 ];
 
@@ -83,6 +128,7 @@ export const asyncRoutes = [
         component: () => import("../views/Config"),
         meta: {
           title: "配置",
+          icon: "el-icon-s-tools",
           roles: ["admin"],
         },
       },

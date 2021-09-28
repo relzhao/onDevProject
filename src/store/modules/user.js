@@ -1,13 +1,14 @@
 /*
  * @Author: your name
  * @Date: 2021-06-09 00:03:29
- * @LastEditTime: 2021-09-03 22:26:15
+ * @LastEditTime: 2021-09-15 12:46:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /onDevProject/src/store/modules/user.js
  */
 import { login, getInfo, logout } from "@/api/user";
 import { getToken, setToken, removeToken } from "@/utils/auth";
+import router, { resetRouter } from "@/router";
 
 const state = {
   token: getToken(),
@@ -91,6 +92,17 @@ const actions = {
       removeToken();
       resolve();
     });
+  },
+  async changeRoles({ commit, dispatch }, role) {
+    const token = role + "-token";
+    commit("SET_TOKEN", token);
+    setToken(token);
+    const { roles } = dispatch("getInfo");
+    resetRouter();
+    const accessRoutes = dispatch("permission/generateRoutes", roles, {
+      root: true,
+    });
+    router.addRoutes(accessRoutes);
   },
 };
 
